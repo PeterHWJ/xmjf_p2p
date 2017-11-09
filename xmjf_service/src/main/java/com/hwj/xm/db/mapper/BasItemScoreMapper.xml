@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hwj.xm.db.dao.BasItemScoreDao" >
+  <resultMap id="BaseResultMap" type="com.hwj.xm.po.BasItemScore" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="item_id" property="itemId" jdbcType="INTEGER" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="education" property="education" jdbcType="INTEGER" />
+    <result column="marital" property="marital" jdbcType="INTEGER" />
+    <result column="city" property="city" jdbcType="INTEGER" />
+    <result column="info" property="info" jdbcType="INTEGER" />
+    <result column="monthly_income" property="monthlyIncome" jdbcType="INTEGER" />
+    <result column="house" property="house" jdbcType="INTEGER" />
+    <result column="creditease" property="creditease" jdbcType="INTEGER" />
+    <result column="credit_use" property="creditUse" jdbcType="INTEGER" />
+    <result column="late_times" property="lateTimes" jdbcType="INTEGER" />
+    <result column="assets_and_credit" property="assetsAndCredit" jdbcType="INTEGER" />
+    <result column="now_work_life" property="nowWorkLife" jdbcType="INTEGER" />
+    <result column="company" property="company" jdbcType="INTEGER" />
+    <result column="work_life" property="workLife" jdbcType="INTEGER" />
+    <result column="post" property="post" jdbcType="INTEGER" />
+    <result column="job_nature" property="jobNature" jdbcType="INTEGER" />
+    <result column="discount" property="discount" jdbcType="INTEGER" />
+    <result column="circulation" property="circulation" jdbcType="INTEGER" />
+    <result column="hedge" property="hedge" jdbcType="INTEGER" />
+    <result column="supervise" property="supervise" jdbcType="INTEGER" />
+    <result column="risk" property="risk" jdbcType="INTEGER" />
+    <result column="collateral_info" property="collateralInfo" jdbcType="INTEGER" />
+    <result column="guarantee" property="guarantee" jdbcType="INTEGER" />
+    <result column="guarantee_info" property="guaranteeInfo" jdbcType="INTEGER" />
+    <result column="total" property="total" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, item_id, age, sex, education, marital, city, info, monthly_income, house, creditease, 
+    credit_use, late_times, assets_and_credit, now_work_life, company, work_life, post, 
+    job_nature, discount, circulation, hedge, supervise, risk, collateral_info, guarantee, 
+    guarantee_info, total
+  </sql>
+  <select id="queryById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from bas_item_score
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.hwj.xm.po.BasItemScore" >
+    insert into bas_item_score
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="marital != null" >
+        marital,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="info != null" >
+        info,
+      </if>
+      <if test="monthlyIncome != null" >
+        monthly_income,
+      </if>
+      <if test="house != null" >
+        house,
+      </if>
+      <if test="creditease != null" >
+        creditease,
+      </if>
+      <if test="creditUse != null" >
+        credit_use,
+      </if>
+      <if test="lateTimes != null" >
+        late_times,
+      </if>
+      <if test="assetsAndCredit != null" >
+        assets_and_credit,
+      </if>
+      <if test="nowWorkLife != null" >
+        now_work_life,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="workLife != null" >
+        work_life,
+      </if>
+      <if test="post != null" >
+        post,
+      </if>
+      <if test="jobNature != null" >
+        job_nature,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="circulation != null" >
+        circulation,
+      </if>
+      <if test="hedge != null" >
+        hedge,
+      </if>
+      <if test="supervise != null" >
+        supervise,
+      </if>
+      <if test="risk != null" >
+        risk,
+      </if>
+      <if test="collateralInfo != null" >
+        collateral_info,
+      </if>
+      <if test="guarantee != null" >
+        guarantee,
+      </if>
+      <if test="guaranteeInfo != null" >
+        guarantee_info,
+      </if>
+      <if test="total != null" >
+        total,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=INTEGER},
+      </if>
+      <if test="marital != null" >
+        #{marital,jdbcType=INTEGER},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=INTEGER},
+      </if>
+      <if test="info != null" >
+        #{info,jdbcType=INTEGER},
+      </if>
+      <if test="monthlyIncome != null" >
+        #{monthlyIncome,jdbcType=INTEGER},
+      </if>
+      <if test="house != null" >
+        #{house,jdbcType=INTEGER},
+      </if>
+      <if test="creditease != null" >
+        #{creditease,jdbcType=INTEGER},
+      </if>
+      <if test="creditUse != null" >
+        #{creditUse,jdbcType=INTEGER},
+      </if>
+      <if test="lateTimes != null" >
+        #{lateTimes,jdbcType=INTEGER},
+      </if>
+      <if test="assetsAndCredit != null" >
+        #{assetsAndCredit,jdbcType=INTEGER},
+      </if>
+      <if test="nowWorkLife != null" >
+        #{nowWorkLife,jdbcType=INTEGER},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=INTEGER},
+      </if>
+      <if test="workLife != null" >
+        #{workLife,jdbcType=INTEGER},
+      </if>
+      <if test="post != null" >
+        #{post,jdbcType=INTEGER},
+      </if>
+      <if test="jobNature != null" >
+        #{jobNature,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="circulation != null" >
+        #{circulation,jdbcType=INTEGER},
+      </if>
+      <if test="hedge != null" >
+        #{hedge,jdbcType=INTEGER},
+      </if>
+      <if test="supervise != null" >
+        #{supervise,jdbcType=INTEGER},
+      </if>
+      <if test="risk != null" >
+        #{risk,jdbcType=INTEGER},
+      </if>
+      <if test="collateralInfo != null" >
+        #{collateralInfo,jdbcType=INTEGER},
+      </if>
+      <if test="guarantee != null" >
+        #{guarantee,jdbcType=INTEGER},
+      </if>
+      <if test="guaranteeInfo != null" >
+        #{guaranteeInfo,jdbcType=INTEGER},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="com.hwj.xm.po.BasItemScore" >
+    update bas_item_score
+    <set >
+      <if test="itemId != null" >
+        item_id = #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="education != null" >
+        education = #{education,jdbcType=INTEGER},
+      </if>
+      <if test="marital != null" >
+        marital = #{marital,jdbcType=INTEGER},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=INTEGER},
+      </if>
+      <if test="info != null" >
+        info = #{info,jdbcType=INTEGER},
+      </if>
+      <if test="monthlyIncome != null" >
+        monthly_income = #{monthlyIncome,jdbcType=INTEGER},
+      </if>
+      <if test="house != null" >
+        house = #{house,jdbcType=INTEGER},
+      </if>
+      <if test="creditease != null" >
+        creditease = #{creditease,jdbcType=INTEGER},
+      </if>
+      <if test="creditUse != null" >
+        credit_use = #{creditUse,jdbcType=INTEGER},
+      </if>
+      <if test="lateTimes != null" >
+        late_times = #{lateTimes,jdbcType=INTEGER},
+      </if>
+      <if test="assetsAndCredit != null" >
+        assets_and_credit = #{assetsAndCredit,jdbcType=INTEGER},
+      </if>
+      <if test="nowWorkLife != null" >
+        now_work_life = #{nowWorkLife,jdbcType=INTEGER},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=INTEGER},
+      </if>
+      <if test="workLife != null" >
+        work_life = #{workLife,jdbcType=INTEGER},
+      </if>
+      <if test="post != null" >
+        post = #{post,jdbcType=INTEGER},
+      </if>
+      <if test="jobNature != null" >
+        job_nature = #{jobNature,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="circulation != null" >
+        circulation = #{circulation,jdbcType=INTEGER},
+      </if>
+      <if test="hedge != null" >
+        hedge = #{hedge,jdbcType=INTEGER},
+      </if>
+      <if test="supervise != null" >
+        supervise = #{supervise,jdbcType=INTEGER},
+      </if>
+      <if test="risk != null" >
+        risk = #{risk,jdbcType=INTEGER},
+      </if>
+      <if test="collateralInfo != null" >
+        collateral_info = #{collateralInfo,jdbcType=INTEGER},
+      </if>
+      <if test="guarantee != null" >
+        guarantee = #{guarantee,jdbcType=INTEGER},
+      </if>
+      <if test="guaranteeInfo != null" >
+        guarantee_info = #{guaranteeInfo,jdbcType=INTEGER},
+      </if>
+      <if test="total != null" >
+        total = #{total,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
