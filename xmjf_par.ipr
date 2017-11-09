@@ -139,6 +139,14 @@
       <module name="xmjf_web" target="1.7" />
     </bytecodeTargetLevel>
   </component>
+  <component name="EclipseCodeFormatterProjectSettings">
+    <option name="projectSpecificProfile">
+      <ProjectSpecificProfile>
+        <option name="formatter" value="ECLIPSE" />
+        <option name="pathToConfigFileJava" value="F:\w-myeclipse\hwj_crm01\.settings\org.eclipse.jdt.core.prefs" />
+      </ProjectSpecificProfile>
+    </option>
+  </component>
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/xmjf_service" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />

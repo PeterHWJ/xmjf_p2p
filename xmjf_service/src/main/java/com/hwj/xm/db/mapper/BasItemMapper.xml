@@ -41,7 +41,7 @@
     <result column="item_is_auto" property="itemIsAuto" jdbcType="INTEGER" />
   </resultMap>
 
-  <resultMap id="BaseResultMap" type="com.hwj.xm.dto.BasItemDto" >
+  <resultMap id="BasItemDtoMap" type="com.hwj.xm.dto.BasItemDto" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="item_isalive" property="itemIsalive" jdbcType="TINYINT" />
     <result column="item_isnew" property="itemIsnew" jdbcType="TINYINT" />
@@ -455,4 +455,5 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+
 </mapper>
