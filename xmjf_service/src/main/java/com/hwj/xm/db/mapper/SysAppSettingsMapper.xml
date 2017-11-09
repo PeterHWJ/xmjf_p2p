@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hwj.xm.db.dao.SysAppSettingsDao" >
+  <resultMap id="BaseResultMap" type="com.hwj.xm.po.SysAppSettings" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="whether_sms" property="whetherSms" jdbcType="INTEGER" />
+    <result column="whether_site_mail" property="whetherSiteMail" jdbcType="INTEGER" />
+    <result column="whether_app_push" property="whetherAppPush" jdbcType="INTEGER" />
+    <result column="whether_account_protect" property="whetherAccountProtect" jdbcType="INTEGER" />
+    <result column="whether_pattern_lock" property="whetherPatternLock" jdbcType="INTEGER" />
+    <result column="whether_touch_id_lock" property="whetherTouchIdLock" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, whether_sms, whether_site_mail, whether_app_push, whether_account_protect, 
+    whether_pattern_lock, whether_touch_id_lock
+  </sql>
+  <select id="queryById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_app_settings
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.hwj.xm.po.SysAppSettings" >
+    insert into sys_app_settings
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="whetherSms != null" >
+        whether_sms,
+      </if>
+      <if test="whetherSiteMail != null" >
+        whether_site_mail,
+      </if>
+      <if test="whetherAppPush != null" >
+        whether_app_push,
+      </if>
+      <if test="whetherAccountProtect != null" >
+        whether_account_protect,
+      </if>
+      <if test="whetherPatternLock != null" >
+        whether_pattern_lock,
+      </if>
+      <if test="whetherTouchIdLock != null" >
+        whether_touch_id_lock,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="whetherSms != null" >
+        #{whetherSms,jdbcType=INTEGER},
+      </if>
+      <if test="whetherSiteMail != null" >
+        #{whetherSiteMail,jdbcType=INTEGER},
+      </if>
+      <if test="whetherAppPush != null" >
+        #{whetherAppPush,jdbcType=INTEGER},
+      </if>
+      <if test="whetherAccountProtect != null" >
+        #{whetherAccountProtect,jdbcType=INTEGER},
+      </if>
+      <if test="whetherPatternLock != null" >
+        #{whetherPatternLock,jdbcType=INTEGER},
+      </if>
+      <if test="whetherTouchIdLock != null" >
+        #{whetherTouchIdLock,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="com.hwj.xm.po.SysAppSettings" >
+    update sys_app_settings
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="whetherSms != null" >
+        whether_sms = #{whetherSms,jdbcType=INTEGER},
+      </if>
+      <if test="whetherSiteMail != null" >
+        whether_site_mail = #{whetherSiteMail,jdbcType=INTEGER},
+      </if>
+      <if test="whetherAppPush != null" >
+        whether_app_push = #{whetherAppPush,jdbcType=INTEGER},
+      </if>
+      <if test="whetherAccountProtect != null" >
+        whether_account_protect = #{whetherAccountProtect,jdbcType=INTEGER},
+      </if>
+      <if test="whetherPatternLock != null" >
+        whether_pattern_lock = #{whetherPatternLock,jdbcType=INTEGER},
+      </if>
+      <if test="whetherTouchIdLock != null" >
+        whether_touch_id_lock = #{whetherTouchIdLock,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

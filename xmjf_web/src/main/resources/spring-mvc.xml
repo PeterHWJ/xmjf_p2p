@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd 
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/task 
+        http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <!-- 扫描com.hwj 下包 -->
+    <context:component-scan base-package="com.hwj"/>
+
+    <aop:aspectj-autoproxy/>
+    <bean id="freemarkerConfig"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/view/"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+    <bean
+            class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".ftl"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+    </bean>
+
+    <!-- mvc 注解驱动 并添加json 支持 -->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+
+            <!-- 返回信息为字符串时 处理 -->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"></bean>
+            <!-- 将对象转换为json 对象 -->
+            <bean
+                    class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- 静态资源文件的处理放行 配置方式一 -->
+    <mvc:default-servlet-handler/>
+
+    <bean id="captchaProducer"
+          class="com.google.code.kaptcha.impl.DefaultKaptcha">
+        <property name="config">
+            <bean class="com.google.code.kaptcha.util.Config">
+                <constructor-arg>
+                    <props>
+                        <prop key="kaptcha.border">yes</prop><!--是否有边框-->
+                        <prop
+                                key="kaptcha.border.color">105,179,90
+                        </prop><!--设置边框颜色 -->
+                        <prop
+                                key="kaptcha.textproducer.font.color">green
+                        </prop><!--验证码文本字符颜色 默认为 Color.BLACK -->
+                        <prop key="kaptcha.session.key">code</prop><!--验证码 -->
+                        <prop key="kaptcha.textproducer.font.names">宋体,楷
+                            体,微软雅黑
+                        </prop><!--设置字体样式 -->
+                        <prop key="kaptcha.border.thickness"></prop><!--边框粗细度 默认为 1 -->
+                        <prop key="kaptcha.producer.impl"></prop><!--验证码生成器 默认为 DefaultKaptcha -->
+                        <prop key="kaptcha.textproducer.impl"></prop><!--验证码文本生成器 默认为 DefaultTextCreator -->
+                        <prop
+                                key="kaptcha.textproducer.char.string"></prop><!--验证码文本字符内容范围 默认为 abcde2345678gfynmnpwx -->
+                        <prop
+                                key="kaptcha.textproducer.char.length">4
+                        </prop><!-- 验证码文本字符长度默认为 5 -->
+                        <prop
+                                key="kaptcha.textproducer.font.size">40
+                        </prop><!--验证码文本字符大小默认为 40 -->
+                        <prop
+                                key="kaptcha.textproducer.char.space">6
+                        </prop> <!--验证码文本字符间距 默认为 2 -->
+                        <prop key="kaptcha.image.width">200</prop> <!--验证码图片宽度 默认为 200 -->
+                        <prop key="kaptcha.image.height">50</prop> <!--验证码图片高度 默认为 40 -->
+                    </props>
+                </constructor-arg>
+            </bean>
+        </property>
+    </bean>
+</beans>
