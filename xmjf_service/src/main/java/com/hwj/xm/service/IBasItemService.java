@@ -1,7 +1,5 @@
 package com.hwj.xm.service;
 
-import com.hwj.xm.dto.BasItemDto;
-import com.hwj.xm.po.BasItem;
 import com.hwj.xm.query.BasItemQuery;
 import com.hwj.xm.util.PageList;
 

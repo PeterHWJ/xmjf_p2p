@@ -95,6 +95,15 @@
   <sql id="Blob_Column_List" >
     item_content
   </sql>
+
+  <sql id="Base_Column_List02" >
+    item.id, item_isalive, item_isnew, item_isrecommend, item_status, item_user_id, item_name,
+    item_second_name, item_number, item_desc, item_rate, item_add_rate, item_serve_rate,
+    item_type, item_cycle, item_cycle_unit, item_account, item_ongoing_account, item_scale,
+    item_single_min_investment, item_repay_method, item_single_max_investment, item_max_investment,
+    invest_times, addip, addtime, release_time, end_time, update_time, password, guarantee_id,
+    contract, receipt_method, prepayment, move_vip, item_loan_use, item_is_auto
+  </sql>
   <select id="queryById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -455,5 +464,38 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="queryBasItemsByParams" parameterType="basItemQuery" resultMap="BasItemDtoMap">
+    SELECT <include refid="Base_Column_List02"></include>,<include refid="Blob_Column_List"></include>,total
+    FROM bas_item item LEFT JOIN bas_item_score score on item.id =score.item_id
+    <where>
+      item_isalive=1
+      <if test="null!=itemType">
+        and item_type=#{itemType}
+      </if>
+      <if test="itemCycle==1">
+        and item_cycle &lt;30
+      </if>
+      <if test="itemCycle==2">
+        and item_cycle &gt;=30 and item_cycle &lt; 90
+      </if>
+      <if test="itemCycle==3">
+        and item_cycle &gt;=90
+      </if>
+      <if test="isHistory==0">
+        <!--可投标项目-->
+        and
+        ( item_status=10
+        or
+        DATE_FORMAT(item.release_time,'%Y-%m-%d')= DATE_FORMAT(NOW(), '%Y-%m-%d')
+        )
+      </if>
+      <if test="isHistory==1">
+        <!--历史项目-->
+        and item.item_status in (18,20,23,30,31,32)
+      </if>
+    </where>
+
+  </select>
 
 </mapper>
